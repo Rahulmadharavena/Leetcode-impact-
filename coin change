@@ -1,0 +1,10 @@
+class Solution:
+    def coinChange(self, coins, amount):
+        dp = [float('inf')] * (amount + 1)  # Initialize DP array with infinity
+        dp[0] = 0  # Base case: 0 coins to make amount 0
+
+        for coin in coins:  # Iterate over each coin
+            for i in range(coin, amount + 1):  
+                dp[i] = min(dp[i], dp[i - coin] + 1)  # Update DP table
+
+        return dp[amount] if dp[amount] != float('inf') else -1  # Return result
