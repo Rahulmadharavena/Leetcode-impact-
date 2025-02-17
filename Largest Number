@@ -1,0 +1,18 @@
+from functools import cmp_to_key
+
+class Solution:
+    def largestNumber(self, nums):
+        # Custom comparator function to decide order
+        def compare(x, y):
+            return (1 if x + y < y + x else -1)  # Sort in decreasing order
+        
+        # Convert numbers to strings for comparison
+        nums = list(map(str, nums))
+
+        # Sort using custom comparator
+        nums.sort(key=cmp_to_key(compare))
+
+        # Join and remove leading zeros (edge case)
+        result = ''.join(nums).lstrip('0')
+
+        return result if result else '0'  # Handle all zeroes case
