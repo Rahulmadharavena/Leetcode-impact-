@@ -1,0 +1,10 @@
+class Solution:
+    def majorityElement(self, nums):
+        candidate, count = 0, 0  # Initialize candidate and count
+        
+        for num in nums:
+            if count == 0:  # If count is zero, choose a new candidate
+                candidate = num
+            count += (1 if num == candidate else -1)  # Update count
+
+        return candidate  # Majority element guaranteed to exist
