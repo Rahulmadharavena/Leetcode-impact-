@@ -1,0 +1,16 @@
+class ListNode:
+    def _init_(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def reverseList(self, head):
+        prev, current = None, head  # Initialize pointers
+        
+        while current:  # Traverse the list
+            next_node = current.next  # Store the next node
+            current.next = prev  # Reverse the link
+            prev = current  # Move prev to the current node
+            current = next_node  # Move current to the next node
+        
+        return prev  # Return the new head of the reversed list
